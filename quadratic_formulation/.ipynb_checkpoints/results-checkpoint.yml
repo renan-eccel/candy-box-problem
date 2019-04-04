@@ -1,0 +1,49 @@
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Lower bound: -inf
+  Upper bound: inf
+  Number of objectives: 1
+  Number of constraints: 0
+  Number of variables: 12
+  Sense: unknown
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Message: bonmin\x3a Optimal
+  Termination condition: optimal
+  Id: 3
+  Error rc: 0
+  Time: 0.6008639335632324
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 1
+  number of solutions displayed: 1
+- Gap: None
+  Status: optimal
+  Message: bonmin\x3a Optimal
+  Objective:
+    OBJ:
+      Value: 0
+  Variable:
+    x[1,1]:
+      Value: 1
+    x[2,2]:
+      Value: 1
+    x[3,2]:
+      Value: 1
+    x[4,2]:
+      Value: 1
+    x[5,1]:
+      Value: 1
+    x[6,2]:
+      Value: 1
+  Constraint: No values
