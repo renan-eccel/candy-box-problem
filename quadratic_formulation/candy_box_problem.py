@@ -23,10 +23,10 @@ def funcao_objetivo(modelo):
 modelo.OBJ = poe.Objective(rule=funcao_objetivo)
 
 
-def funcao_restricao_de_cobertura(modelo, i):
+def funcao_restricao_de_particionamento(modelo, i):
     return modelo.x[i, 1] + modelo.x[i, 2] == 1
 
 
 # cria uma restricao de cobertura para cada bombom
-modelo.restricao_de_cobertura = \
-    poe.Constraint(modelo.B, rule=funcao_restricao_de_cobertura)
+modelo.restricaoDeParticionamento = \
+    poe.Constraint(modelo.B, rule=funcao_restricao_de_particionamento)
