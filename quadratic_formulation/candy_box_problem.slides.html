@@ -11907,9 +11907,9 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Modelo-Matem&#225;tico">Modelo Matem&#225;tico<a class="anchor-link" href="#Modelo-Matem&#225;tico">&#182;</a></h1><p>\begin{equation}
 \begin{array}{rl}
-\min &amp;  (\sum_B c_i x_{i1} - \sum_B c_i x_{i2})^2\\
+\min &amp;  (\sum_B g_i x_{i1} - \sum_B g_i x_{i2})^2\\
 s.t. &amp; x_{i1} + x_{i2} = 1,  \forall i \in B \\
-&amp; x_{ij} =  \{0,1\}, \forall i \in B \land \forall j \in P
+&amp; x_{ij} =  \{0,1\}, \forall i \in B \land \forall j \in C
 \end{array}
 \end{equation}</p>
 
@@ -11944,7 +11944,7 @@ s.t. &amp; x_{i1} + x_{i2} = 1,  \forall i \in B \\
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">P</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">criancas</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11966,7 +11966,7 @@ s.t. &amp; x_{i1} + x_{i2} = 1,  \forall i \in B \\
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Set</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">bombons</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Set</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11988,7 +11988,7 @@ s.t. &amp; x_{i1} + x_{i2} = 1,  \forall i \in B \\
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">poe</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">gostosura</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">bombons</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">poe</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12020,7 +12020,7 @@ x_{12}\ x_{22}\  x_{32}\  x_{42}\  x_{52}\  x_{62}
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="n">modelo</span><span class="o">.</span><span class="n">P</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">poe</span><span class="o">.</span><span class="n">Binary</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">bombons</span><span class="p">,</span> <span class="n">modelo</span><span class="o">.</span><span class="n">criancas</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">poe</span><span class="o">.</span><span class="n">Binary</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12035,7 +12035,7 @@ x_{12}\ x_{22}\  x_{32}\  x_{42}\  x_{52}\  x_{62}
 <p>Função objetivo:
 \begin{equation}
 \begin{array}{rl}
-\min &amp;  (\sum_B c_i x_{i1} - \sum_B c_i x_{i2})^2\\
+\min &amp;  (\sum_B g_i x_{i1} - \sum_B g_i x_{i2})^2\\
 \end{array}
 \end{equation}</p>
 
@@ -12048,8 +12048,8 @@ x_{12}\ x_{22}\  x_{32}\  x_{42}\  x_{52}\  x_{62}
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">funcao_objetivo</span><span class="p">(</span><span class="n">modelo</span><span class="p">):</span>
-    <span class="k">return</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">modelo</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
-            <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">modelo</span><span class="o">.</span><span class="n">B</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">gostosura</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">modelo</span><span class="o">.</span><span class="n">bombons</span><span class="p">))</span>
+            <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">gostosura</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">modelo</span><span class="o">.</span><span class="n">bombons</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="n">modelo</span><span class="o">.</span><span class="n">OBJ</span> <span class="o">=</span> <span class="n">poe</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="n">funcao_objetivo</span><span class="p">)</span>
 </pre></div>
@@ -12082,7 +12082,7 @@ s.t. &amp; x_{i1} + x_{i2} = 1,  \forall i \in B \\
     <span class="k">return</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
 
 <span class="n">modelo</span><span class="o">.</span><span class="n">restricao_de_cobertura</span> <span class="o">=</span> \
-    <span class="n">poe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">funcao_restricao_de_cobertura</span><span class="p">)</span>
+    <span class="n">poe</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">bombons</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">funcao_restricao_de_cobertura</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12114,9 +12114,9 @@ s.t. &amp; x_{i1} + x_{i2} = 1,  \forall i \in B \\
 <div class="output_subarea output_stream output_stdout output_text">
 <pre># AMPL format
 
-set B := 1 2 3 4 5 6;
+set bombons := 1 2 3 4 5 6;
 
-param c :=
+param gostosura :=
 1 9
 2 5
 3 8
@@ -12158,17 +12158,17 @@ param c :=
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[    0.00] Setting up Pyomo environment
 [    0.00] Applying Pyomo preprocessing actions
-[    0.08] Creating model
-[    0.13] Applying solver
-[    0.77] Processing results
+[    0.00] Creating model
+[    0.01] Applying solver
+[    0.05] Processing results
     Number of solutions: 1
     Solution Information
       Gap: None
       Status: optimal
       Function Value: 0.0
     Solver results file: results.yml
-[    0.79] Applying Pyomo postprocessing actions
-[    0.79] Pyomo Finished
+[    0.05] Applying Pyomo postprocessing actions
+[    0.05] Pyomo Finished
 </pre>
 </div>
 </div>
@@ -12179,7 +12179,7 @@ param c :=
 </div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>grep -B <span class="m">1</span> -A <span class="m">99</span> <span class="s2">&quot;#   Solution Information&quot;</span> results.yml
@@ -12232,7 +12232,7 @@ Solution:
 </div>
 </div>
 
-</div></section></section>
+</div>
 </div>
 </div>
 

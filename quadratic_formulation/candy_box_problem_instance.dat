@@ -1,8 +1,8 @@
 # AMPL format
 
-set B := 1 2 3 4 5 6;
+set bombons := 1 2 3 4 5 6;
 
-param c :=
+param gostosura :=
 1 9
 2 5
 3 8

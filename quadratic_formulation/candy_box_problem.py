@@ -2,22 +2,22 @@ import pyomo.environ as poe
 
 modelo = poe.AbstractModel()
 
-# criancas
-modelo.P = poe.RangeSet(1, 2)
-# bombons
-modelo.B = poe.Set()
+modelo.criancas = poe.RangeSet(1, 2)
+modelo.bombons = poe.Set()
 
 # nivel de gostosura dos bombons
-modelo.c = poe.Param(modelo.B, within=poe.NonNegativeIntegers)
+modelo.gostosura = poe.Param(modelo.bombons, within=poe.NonNegativeIntegers)
 
 # variavel de decisao: 1, se o bombom i for para a crianca j
 #                      0, caso contrario
-modelo.x = poe.Var(modelo.B, modelo.P, within=poe.Binary)
+modelo.x = poe.Var(modelo.bombons, modelo.criancas, within=poe.Binary)
 
 
 def funcao_objetivo(modelo):
-    return ((sum(modelo.c[i] * modelo.x[i, 1] for i in modelo.B)
-             - sum(modelo.c[i] * modelo.x[i, 2] for i in modelo.B))**2)
+    return ((sum(modelo.gostosura[i] * modelo.x[i, 1]
+                 for i in modelo.bombons)
+             - sum(modelo.gostosura[i] * modelo.x[i, 2]
+                   for i in modelo.bombons))**2)
 
 
 modelo.OBJ = poe.Objective(rule=funcao_objetivo)
@@ -29,4 +29,4 @@ def funcao_restricao_de_particionamento(modelo, i):
 
 # cria uma restricao de cobertura para cada bombom
 modelo.restricaoDeParticionamento = \
-    poe.Constraint(modelo.B, rule=funcao_restricao_de_particionamento)
+    poe.Constraint(modelo.bombons, rule=funcao_restricao_de_particionamento)
