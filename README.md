@@ -32,3 +32,8 @@ qualquer n de crianças? Como seria a formulação no Pyomo?
 um valor de "gostosura" diferente pra cada bombom? Como seria a formulação no 
 Pyomo?
 
+
+Se tiver qualquer dificuldade em rodar os exemplos na sua máquina, entender o 
+conteúdo ou executar os desafios, por favor, entre em contato!
+Vai ser um imenso prazer poder ajudar!
+
